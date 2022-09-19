@@ -1,0 +1,19 @@
+import pandas as pd
+
+
+df=pd.read_csv('rankings Football Fantasy Draft Cheat Sheet.csv')
+df.drop(["Notes",'Grp'],axis=1,inplace=True)
+data = df.set_index("Player")
+data.head(200)
+
+required = 'End'
+
+while True:
+    print(data.head(200))
+    player = str(input("What player was drafted:"))
+    if player == required:
+        print ("End of draft")
+        break
+    else:
+        data = data.drop([player],axis=0)
+        print(data.head(200))
